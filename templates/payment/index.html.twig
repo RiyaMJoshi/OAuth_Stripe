@@ -1,11 +1,37 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PaymentController!{% endblock %}
+{% block title %}Make Payment!
+{% endblock %}
 
 {% block body %}
 
-    {{ parent() }}
-<div>
-    
-</div>
+	{{ parent() }}
+
+	<div class="container-fluid col-8">
+        <span class="fs-2">Make your Payment</span>
+		<form action="/checkout" method="POST" class="my-4">
+			<div class="mb-3">
+				<label for="product" class="form-label">Product</label>
+				<input type="text" class="form-control" id="product" name="product" placeholder="T-shirt" required="required">
+			</div>
+
+			<label for="unitPrice" class="form-label">Unit Price</label>
+			<div class="input-group mb-3">
+				<span class="input-group-text">₹</span>
+				<input type="text" class="form-control" id="unitPrice" name="unitPrice" aria-label="Unit Amount (to the nearest INR)" placeholder="0.00" required="required">
+			</div>
+
+			<div class="mb-3">
+				<label for="quantity" class="form-label">Quantity</label>
+				<input type="number" class="form-control" id="quantity" name="quantity" value="1" required="required">
+			</div>
+
+			<div class="mb-3 form-check">
+				<input type="checkbox" class="form-check-input" id="confirmDetails" required="required">
+				<label class="form-check-label" for="confirmDetails">Confirm Above Details</label>
+			</div>
+
+			<button type="submit" class="btn btn-warning btn-lg">Checkout</button>
+		</form>
+	</div>
 {% endblock %}
